@@ -15,14 +15,14 @@ async function main() {
 
   // We get the contract to deploy
   const ChihayaCoin = await ethers.getContractFactory("ChihayaCoin");
-  const chihayaCoin = await upgrades.deployProxy(ChihayaCoin);
+  // const chihayaCoin = await upgrades.deployProxy(ChihayaCoin);
 
-  await chihayaCoin.deployed();
+  // await chihayaCoin.deployed();
 
-  console.log("chihayaCoin deployed to:", chihayaCoin.address);
+  // console.log("chihayaCoin deployed to:", chihayaCoin.address);
 
   // Upgrading
-  // const chihayaCoin = await upgrades.upgradeProxy('0x589545b917a4db56a7fd5cd28b6b7c53e0fb46a7', ChihayaCoin);
+  const chihayaCoin = await upgrades.upgradeProxy('0x589545b917a4db56a7fd5cd28b6b7c53e0fb46a7', ChihayaCoin);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

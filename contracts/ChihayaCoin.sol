@@ -22,4 +22,10 @@ contract ChihayaCoin is Initializable, ERC20Upgradeable {
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override {
         require(amount == 0 || _chihaya(amount), "Chihaya: \u304f\u3063\uff01");
     }
+
+    event Message(address indexed sender, string text);
+
+    function message(string memory text) public virtual {
+        emit Message(_msgSender(), text);
+    }
 }
