@@ -5,7 +5,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol";
 
 contract ChihayaCoin is Initializable, ERC20Upgradeable {
     function initialize() public virtual initializer {
-        __ERC20_init("ChihayaCoin", "CHY");
+        __ERC20_init("Chihaya Coin", "CHY");
         _mint(msg.sender, 72000000000000000000000000); // 72 million * 10 ^ 18
     }
 
