@@ -20,12 +20,16 @@ task("accounts", "Prints the list of accounts", async () => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.7.3",
+  solidity: "0.8.20",
   networks: {
       rinkeby: {
         url: `https://eth-rinkeby.alchemyapi.io/v2/${alchemyApiKey}`,
         accounts: {mnemonic: mnemonic}
-      }
+      },
+      // berachain_bartio: {
+      //   url: `https://berachain-bartio.g.alchemy.com/v2/${alchemyApiKey}`,
+      //   accounts: { mnemonic },
+      // }
   },
 };
 

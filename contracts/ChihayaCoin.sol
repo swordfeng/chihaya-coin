@@ -1,10 +1,9 @@
-pragma solidity ^0.7.0;
+pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol";
+import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 
-contract ChihayaCoin is Initializable, ERC20Upgradeable {
-    function initialize() public virtual initializer {
+contract ChihayaCoin is ERC20Upgradeable {
+    function initialize() initializer public {
         __ERC20_init("Chihaya Coin", "CHY");
         _mint(msg.sender, 72000000000000000000000000); // 72 million * 10 ^ 18
     }
@@ -19,8 +18,9 @@ contract ChihayaCoin is Initializable, ERC20Upgradeable {
         return false;
     }
 
-    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override {
-        require(amount == 0 || _chihaya(amount), "Chihaya: \u304f\u3063\uff01");
+    function _update(address from, address to, uint256 amount) internal virtual override {
+        require(to == address(0) || amount == 0 || !_chihaya(amount), "Chihaya: \u304f\u3063\uff01");
+        super._update(from, to, amount);
     }
 
     event Message(address indexed sender, string text);
